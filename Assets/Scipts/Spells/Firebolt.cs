@@ -11,6 +11,7 @@ namespace Assets.Scripts
 
         public Firebolt()
         {
+            cantrip = true;
             cost = 0;
             range = 120;
             sides = new int[] { 10 };

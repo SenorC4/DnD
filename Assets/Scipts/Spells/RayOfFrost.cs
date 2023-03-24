@@ -11,6 +11,7 @@ namespace Assets.Scripts
 
         public RayOfFrost()
         {
+            cantrip = true;
             cost = 0;
             range = 60;
             sides = new int[] { 10 };
