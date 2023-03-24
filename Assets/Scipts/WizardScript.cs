@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WizardScript : CharacterScript
 {
+    List<Spell> spellList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,12 @@ public class WizardScript : CharacterScript
         //meleeDamage[1] = 6;
         setMovement(30);
         setType("wizard");
+        spellList = new List<Spell>();    
+
+    }
+
+    public WizardScript(List<Spell> ingestSpells){
+        spellList = ingestSpells;
     }
 
     public override int rollForMeleeDamage()

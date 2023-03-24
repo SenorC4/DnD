@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
-    class Spell
+    public class Spell
     {
         DiceRoller d = new DiceRoller();
         public string name;

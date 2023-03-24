@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClericScript : CharacterScript
 {
 
-
+    List<Spell> spellList;
 
 
     // Start is called before the first frame update
@@ -18,6 +18,11 @@ public class ClericScript : CharacterScript
         //meleeDamage[1] = 6;
         setMovement(25);
         setType("cleric");
+        spellList = new List<Spell>();
+    }
+
+    public ClericScript(List<Spell> ingestSpells){
+        spellList = ingestSpells;
     }
 
     public override int rollForMeleeDamage()
