@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts
-{
-    class Spell : MonoBehaviour
+
+    class Spell
     {
         DiceRoller d = new DiceRoller();
-
+        public string name;
         public int[] sides;
         public int range;
         public int modifier;
@@ -39,5 +38,3 @@ namespace Assets.Scripts
         }
 
     }
-
-}

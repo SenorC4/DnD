@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts
-{
+
     class Aid : Spell
     {
         public Aid()
@@ -22,4 +21,4 @@ namespace Assets.Scripts
 
     }
 
-}
+

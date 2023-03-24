@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -69,6 +70,7 @@ public abstract class CharacterScript : MonoBehaviour
     {
         other.gameObject.GetComponent<CharacterScript>().takeDamage(rollForMeleeDamage());
     }
+
 
     public abstract int rollForMeleeDamage();
     

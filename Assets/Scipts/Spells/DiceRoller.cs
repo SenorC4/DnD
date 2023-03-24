@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts
-{
+
     class DiceRoller
     {
         /*this method gives you a random dice result
@@ -76,4 +75,4 @@ namespace Assets.Scripts
 
     }
 
-}
+

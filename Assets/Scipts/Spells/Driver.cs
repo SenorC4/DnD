@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Assets.Scripts
-{
+
     public class Driver : MonoBehaviour
     {
     
@@ -60,4 +59,3 @@ namespace Assets.Scripts
         
 
     }
-}

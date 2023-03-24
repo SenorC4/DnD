@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts
-{
+
     class HealingWord : Spell
     {
         public HealingWord()
@@ -22,4 +21,3 @@ namespace Assets.Scripts
 
     }
 
-}

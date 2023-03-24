@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ClericScript : CharacterScript
 {
-    
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        
         setHP(60);
         setAC(16);//chain mail
         //meleeDamage[0] = 2;//using a maul

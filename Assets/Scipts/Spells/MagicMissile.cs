@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts
-{
+
     class MagicMissile : Spell
     {
 
@@ -23,4 +22,4 @@ namespace Assets.Scripts
 
     }
 
-}
+
