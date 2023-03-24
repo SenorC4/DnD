@@ -16,6 +16,7 @@ namespace Assets.Scripts
         public int modifier;
         public int damage; //1 is damaging, -1 is healing
         public int cost;
+        public bool cantrip = false;
 
         public Spell()
         {
@@ -30,6 +31,11 @@ namespace Assets.Scripts
         public int getDamage()
         {
             return d.CastingRoll(sides, modifier) * damage;
+        }
+
+        public bool isCantrp()
+        {
+            return cantrip;
         }
 
     }
