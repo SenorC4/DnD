@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public abstract class CharacterScript : MonoBehaviour
+public abstract class CharacterScript: MonoBehaviour
 {
     private int HP;
     private int AC;
