@@ -14,6 +14,7 @@ public class CharacterCreate : MonoBehaviour
     public TMPro.TMP_Dropdown cSS3;
 
     public TMPro.TMP_Text textOut;
+    public static List<CharacterScript> playerList = new List<CharacterScript>();
 
     
     
@@ -27,13 +28,28 @@ public class CharacterCreate : MonoBehaviour
 
         if(wizardText.Contains("Slot")){
             textOut.text = "Please choose your spells";
+        }else if(playerList.Count > 9){
+            textOut.text = "Max number of players reached";
         }else{
             //parse spells from text and add them to the list
+            if(wizardText.Contains("fire")){
+                wizardSpells.Add(new Firebolt());
+            }
+            if(wizardText.Contains("Frost")){
+                wizardSpells.Add(new RayOfFrost());
+            }
+            if(wizardText.Contains("Magic")){
+                wizardSpells.Add(new MagicMissile());
+            }
+            if(wizardText.Contains("Scorching")){
+                wizardSpells.Add(new ScorchingRay());
+            }
 
             textOut.text = "Added: " + wizardText;
-            WizardScript wizard = new WizardScript(wizardSpells);
-            //find a way to move the characters to the game scene
+            playerList.Add(new WizardScript(wizardSpells));
+            wizardSpells.Clear();
         }
+        Debug.Log(playerList.Count);
     }
 
     public void addCleric(){
@@ -44,16 +60,30 @@ public class CharacterCreate : MonoBehaviour
 
         if(clericText.Contains("Slot")){
             textOut.text = "Please choose your spells";
+        }else if(playerList.Count > 9){
+            textOut.text = "Max number of players reached";
         }else{
-            //parse spells from text and add them to the list
-
-
+            if(clericText.Contains("1-Healing")){
+                clericSpells.Add(new HealingWord());
+            }
+            if(clericText.Contains("2-Aid")){
+                clericSpells.Add(new Aid());
+            }
+            if(clericText.Contains("2-Mass")){
+                clericSpells.Add(new MassHealingWord());
+            }
 
             textOut.text = "Added: " + clericText;
 
-            ClericScript cleric = new ClericScript(clericSpells);
-            //find a way to move the characters to the game scene
+            playerList.Add(new ClericScript(clericSpells));
+            clericSpells.Clear();
+            
         }
+        Debug.Log(playerList.Count);
+    }
+
+    public static List<CharacterScript> getPlayerList(){
+        return playerList;
     }
 
 }
