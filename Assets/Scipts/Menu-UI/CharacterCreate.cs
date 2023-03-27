@@ -13,9 +13,12 @@ public class CharacterCreate : MonoBehaviour
     public TMPro.TMP_Dropdown cSS2;
     public TMPro.TMP_Dropdown cSS3;
 
+    public TMPro.TMP_Dropdown SkeletonDrop;
+    public TMPro.TMP_Dropdown SkeletonHorseDrop;
+
     public TMPro.TMP_Text textOut;
     public static List<CharacterScript> playerList = new List<CharacterScript>();
-
+    public static List<CharacterScript> enemyList = new List<CharacterScript>();
     
     
 
@@ -82,8 +85,32 @@ public class CharacterCreate : MonoBehaviour
         Debug.Log(playerList.Count);
     }
 
+    public void addEnemies(){
+        if((SkeletonDrop.value + SkeletonHorseDrop.value) <= 10){
+
+            for(int i = 0; i < SkeletonDrop.value; i++){
+                enemyList.Add(new SkeletonScript());
+
+            }
+            
+            for(int i = 0; i < SkeletonHorseDrop.value; i++){
+                enemyList.Add(new WarHorseSkeletonScript());
+
+            }
+
+            textOut.text = "Added: " + SkeletonDrop.value + " Skeletons and " + SkeletonHorseDrop.value + " Warhorse Skeletons.";
+        
+        }else{
+            textOut.text = "Max number of Enemies is 10";
+        }
+
+    }
+
     public static List<CharacterScript> getPlayerList(){
         return playerList;
     }
 
+    public static List<CharacterScript> getEnemyList(){
+        return enemyList;
+    }
 }
