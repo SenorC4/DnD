@@ -17,8 +17,9 @@ public class CharacterCreate : MonoBehaviour
     public TMPro.TMP_Dropdown SkeletonHorseDrop;
 
     public TMPro.TMP_Text textOut;
-    public static List<CharacterScript> playerList = new List<CharacterScript>();
-    public static List<CharacterScript> enemyList = new List<CharacterScript>();
+
+    [SerializeField] public static List<CharacterScript> playerList = new List<CharacterScript>();
+    [SerializeField] public static List<CharacterScript> enemyList = new List<CharacterScript>();
     
     
 

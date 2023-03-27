@@ -97,4 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666388ba310206c458a343de1c542ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTile: {fileID: 0}
+  activeTile: {fileID: 1682407924789429510, guid: 8246e53f860beb248912f5225b38d7eb,
+    type: 3}
