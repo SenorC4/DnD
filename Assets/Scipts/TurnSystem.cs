@@ -57,7 +57,7 @@ public class TurnSystem : MonoBehaviour
                 else
                 {
                     makingMove();
-                    Debug.Log("Player");
+                    Debug.Log(units[index].GetComponent<CharacterScript>().GetType());
                 }
             
         
