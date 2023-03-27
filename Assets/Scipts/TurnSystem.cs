@@ -8,19 +8,21 @@ public class TurnSystem : MonoBehaviour
     public List<GameObject> units;
     private List<CharacterScript> characters;
     private CharacterScript tempCharacter;
-    private GameObject temp;
-    public bool middleOfTurn;
+    //private GameObject temp = null;
+    public bool middleOfTurn = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < units.Count; i++)
+        Debug.Log("Turn Started");
+        for (int i = 0; i < units.Count-1; i++)
         {
-            temp = Instantiate(units[i]);
-            characters.Add(temp.GetComponent<CharacterScript>());
+            //temp = Instantiate(units[i]);
+            characters.Add(units[i].GetComponent<CharacterScript>());
         }
         startPlaying();
+        Debug.Log("Turn Started");
     }
 
 
@@ -62,6 +64,7 @@ public class TurnSystem : MonoBehaviour
     public void endTurn()
     {
         middleOfTurn = false;
+        Debug.Log("Turn Ended");
     }
 
 

@@ -41,10 +41,10 @@ public class MapManager : MonoBehaviour
                 {
                     var tileLocation = new Vector3Int(x, y, z);
                     var tileKey = new Vector2Int(x, y);
-                    Debug.Log("created");
+                    //Debug.Log("created");
                     //if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
                     //{
-                        Debug.Log("created");
+                        //Debug.Log("created");
                         var overlayTile = Instantiate(overlayTilePrefab, overlayContainer.transform);
                         var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
 
