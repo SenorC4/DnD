@@ -185,4 +185,9 @@ public class CharacterCreate : MonoBehaviour
     public List<GameObject> getEnemyList(){
         return enemyList;
     }
+
+    public List<GameObject> getUnitList()
+    {
+        return units;
+    }
 }

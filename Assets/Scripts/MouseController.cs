@@ -51,12 +51,14 @@ public class MouseController : MonoBehaviour
                         PlayerBehavior pb = list[i].GetComponent<PlayerBehavior>();
                         if (pb.activeTile == overlayTile)
                         {
-                            Debug.Log(list[i].GetComponent<CharacterScript>().getHP());
-                            list[i].GetComponent<CharacterScript>().takeDamage(player.gameObject.GetComponent<CharacterScript>().rollForMeleeDamage());
-                            Debug.Log(player.gameObject.GetComponent<CharacterScript>().rollForMeleeDamage());
-                            Debug.Log(list[i].GetComponent<CharacterScript>().getHP());
+                            int dam = player.gameObject.GetComponent<CharacterScript>().rollForMeleeDamage();
+                            Debug.Log("HP: " + list[i].GetComponent<CharacterScript>().getHP());
+                            list[i].GetComponent<CharacterScript>().takeDamage(dam);
+                            Debug.Log(dam);
+                            Debug.Log("HP: " + list[i].GetComponent<CharacterScript>().getHP());
                             isAttacking = true;
                             justAttacked = true;
+                            ts.setDamageDone(dam);
                         }
                     }
                     ts.attack--;
@@ -74,7 +76,7 @@ public class MouseController : MonoBehaviour
                     {
                         path = pathfinder.findPath(player.activeTile, overlayTile);
                         Debug.Log(path.Count);
-                        if (path.Count > player.gameObject.GetComponent<CharacterScript>().getMovement() / 5)
+                        if (path.Count > player.gameObject.GetComponent<CharacterScript>().getMovement() / 5 || path.Count == 0)
                         {
                             ts.move--;
                         }
