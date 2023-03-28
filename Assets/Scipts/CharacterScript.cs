@@ -13,6 +13,7 @@ public abstract class CharacterScript: MonoBehaviour
     public List<GameObject> enemies;
     private string type;
     private int num;
+    private List<Spell> spells;
 
     public int getNum()
     {
@@ -41,6 +42,12 @@ public abstract class CharacterScript: MonoBehaviour
     {
         type = characterType;
     }
+
+    public void setSpells(List<Spell> spellsIn)
+    {
+        spells = spellsIn;
+    }
+
     public int getArmorClass()
     {
         return AC;

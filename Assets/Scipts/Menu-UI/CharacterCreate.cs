@@ -18,8 +18,13 @@ public class CharacterCreate : MonoBehaviour
 
     public TMPro.TMP_Text textOut;
 
-    [SerializeField] public static List<CharacterScript> playerList = new List<CharacterScript>();
-    [SerializeField] public static List<CharacterScript> enemyList = new List<CharacterScript>();
+    public GameObject wizardPre;
+    public GameObject clericPre;
+    public GameObject skelePre;
+    public GameObject horseSkelePre;
+
+    [SerializeField] public List<GameObject> playerList = new List<GameObject>();
+    [SerializeField] public List<GameObject> enemyList = new List<GameObject>();
     
     
 
@@ -49,8 +54,15 @@ public class CharacterCreate : MonoBehaviour
                 wizardSpells.Add(new ScorchingRay());
             }
 
+            //Need random tile here
+            ///
+            ///
+            GameObject wizard = Instantiate(wizardPre);
+            wizard.AddComponent<WizardScript>();
+            wizard.GetComponent<WizardScript>().setSpells(wizardSpells);
+
             textOut.text = "Added: " + wizardText;
-            playerList.Add(new WizardScript(wizardSpells));
+            playerList.Add(wizard);
             wizardSpells.Clear();
         }
         Debug.Log(playerList.Count);
@@ -77,9 +89,16 @@ public class CharacterCreate : MonoBehaviour
                 clericSpells.Add(new MassHealingWord());
             }
 
+            //Need random tile here
+            ///
+            ///
+            GameObject cleric = Instantiate(clericPre);
+            cleric.AddComponent<ClericScript>();
+            cleric.GetComponent<ClericScript>().setSpells(clericSpells);
+
             textOut.text = "Added: " + clericText;
 
-            playerList.Add(new ClericScript(clericSpells));
+            playerList.Add(cleric);
             clericSpells.Clear();
             
         }
@@ -90,14 +109,23 @@ public class CharacterCreate : MonoBehaviour
         if((SkeletonDrop.value + SkeletonHorseDrop.value) <= 10){
 
             for(int i = 0; i < SkeletonDrop.value; i++){
-                enemyList.Add(new SkeletonScript());
+                //enemyList.Add(new SkeletonScript());
 
+                GameObject skeleton = Instantiate(skelePre);
+                skeleton.AddComponent<SkeletonScript>();
+
+                playerList.Add(skeleton);
             }
             
             for(int i = 0; i < SkeletonHorseDrop.value; i++){
-                enemyList.Add(new WarHorseSkeletonScript());
+                //enemyList.Add(new WarHorseSkeletonScript());
+                GameObject skeletonHorse = Instantiate(horseSkelePre);
+                skeletonHorse.AddComponent<WarHorseSkeletonScript>();
 
+                playerList.Add(skeletonHorse);
             }
+
+
 
             textOut.text = "Added: " + SkeletonDrop.value + " Skeletons and " + SkeletonHorseDrop.value + " Warhorse Skeletons.";
         
@@ -107,11 +135,11 @@ public class CharacterCreate : MonoBehaviour
 
     }
 
-    public static List<CharacterScript> getPlayerList(){
+    public List<GameObject> getPlayerList(){
         return playerList;
     }
 
-    public static List<CharacterScript> getEnemyList(){
+    public List<GameObject> getEnemyList(){
         return enemyList;
     }
 }

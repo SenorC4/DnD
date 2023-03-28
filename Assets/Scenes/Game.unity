@@ -2162,7 +2162,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &299608782
 GameObject:
@@ -4217,7 +4217,6 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
-  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4345,23 +4344,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   middleOfTurn: 0
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1aceafe7c4d19447b89ffeaea453d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerList: []
-  enemyList: []
-  playerPrefabList: []
-  playerPrefab: {fileID: 6249269648014675411, guid: a36f9c82af925c940985c286bdb19d59,
-    type: 3}
 --- !u!1 &531192539
 GameObject:
   m_ObjectHideFlags: 0
@@ -5485,7 +5467,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &778950164
 GameObject:
@@ -6779,7 +6761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &1050479072
 Grid:
   m_ObjectHideFlags: 0
@@ -6806,7 +6788,7 @@ Transform:
   m_Children:
   - {fileID: 2112264990}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1050479074
 MonoBehaviour:
@@ -7215,7 +7197,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1079944274
 MonoBehaviour:
@@ -7564,6 +7546,16 @@ MonoBehaviour:
   SkeletonDrop: {fileID: 433621368}
   SkeletonHorseDrop: {fileID: 827172691}
   textOut: {fileID: 1641322487}
+  wizardPre: {fileID: 6249269648014675411, guid: a36f9c82af925c940985c286bdb19d59,
+    type: 3}
+  clericPre: {fileID: 2617641942963629627, guid: d1328401364c61842a8489d5930b99f8,
+    type: 3}
+  skelePre: {fileID: 2806585163824663883, guid: 1bd56913d06659a4da9d1108a53bfb09,
+    type: 3}
+  horseSkelePre: {fileID: 1890745372876679234, guid: 706da5ff267822c4a9bd0935bdf0c1b4,
+    type: 3}
+  playerList: []
+  enemyList: []
 --- !u!114 &1143591676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8109,7 +8101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1253477957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11320,6 +11312,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1050479071}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1655296451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14143,7 +14147,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1186693976338563910
 PrefabInstance:
@@ -14155,7 +14159,7 @@ PrefabInstance:
     - target: {fileID: 6249269648014675409, guid: a36f9c82af925c940985c286bdb19d59,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6249269648014675409, guid: a36f9c82af925c940985c286bdb19d59,
         type: 3}
