@@ -13,8 +13,8 @@ public class TurnSystem : MonoBehaviour
     //private GameObject temp = null;
     public bool middleOfTurn = false;
     private int index;
-    private int move;
-    private int attack;
+    public int move;
+    public int attack;
     private bool created;
     public TMPro.TMP_Text stats;
     public TMPro.TMP_Text availableAttacks;

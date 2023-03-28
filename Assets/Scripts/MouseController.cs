@@ -37,7 +37,9 @@ public class MouseController : MonoBehaviour
             OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
             transform.position = overlayTile.transform.position;
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder + 2;
-            
+
+            TurnSystem ts = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TurnSystem>();
+
             if (Input.GetMouseButtonDown(0))
             {
                 overlayTile.GetComponent<OverlayTile>().ShowTile();
@@ -57,6 +59,7 @@ public class MouseController : MonoBehaviour
                             justAttacked = true;
                         }
                     }
+                    ts.attack--;
                 }
                 else if (player == null)
                 {
@@ -65,8 +68,17 @@ public class MouseController : MonoBehaviour
                 }
                 else
                 {
-                    path = pathfinder.findPath(player.activeTile, overlayTile);
-                    Debug.Log(path.Count);
+                    Debug.Log("move: " + ts.move);
+                    ts.move++;
+                    if (ts.move <= 2)
+                    {
+                        path = pathfinder.findPath(player.activeTile, overlayTile);
+                        Debug.Log(path.Count);
+                        if (path.Count > player.gameObject.GetComponent<CharacterScript>().getMovement() / 5)
+                        {
+                            ts.move--;
+                        }
+                    }
                 }
             }
         }
