@@ -130,7 +130,7 @@ public class CharacterCreate : MonoBehaviour
     }
 
     public void addEnemies(){
-        if((SkeletonDrop.value + SkeletonHorseDrop.value) <= 5){
+        if((SkeletonDrop.value + SkeletonHorseDrop.value + enemyList.Count) <= 5){
 
             for(int i = 0; i < SkeletonDrop.value; i++){
                 //enemyList.Add(new SkeletonScript());
@@ -170,7 +170,7 @@ public class CharacterCreate : MonoBehaviour
             textOut.text = "Added: " + SkeletonDrop.value + " Skeletons and " + SkeletonHorseDrop.value + " Warhorse Skeletons.";
         
         }else{
-            textOut.text = "Max number of Enemies is 10";
+            textOut.text = "Max number of Enemies is 5";
         }
 
     }
