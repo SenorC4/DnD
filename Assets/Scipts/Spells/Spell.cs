@@ -32,6 +32,11 @@ public class Spell
         return d.CastingRoll(sides, modifier) * damage;
     }
 
+    public string getName()
+    {
+        return name;
+    }
+
     public bool isCantrp()
     {
         return cantrip;

@@ -14,7 +14,7 @@ public class WizardScript : CharacterScript
         //meleeDamage[0] = 1;//using a handaxe
         //meleeDamage[1] = 6;
         setMovement(30);
-        setType("wizard");
+        setType("Wizard");
         spellList = new List<Spell>();    
 
     }

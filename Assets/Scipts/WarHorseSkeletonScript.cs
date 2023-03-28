@@ -12,7 +12,7 @@ public class WarHorseSkeletonScript : CharacterScript
         //meleeDamage[0] = 2;//using a shortsword
         //meleeDamage[1] = 6;
         setMovement(30);
-        setType("horse");
+        setType("Warhorse Skeleton");
     }
 
     public override int rollForMeleeDamage()

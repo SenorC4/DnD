@@ -4330,6 +4330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   units: []
   middleOfTurn: 0
+  stats: {fileID: 889095366}
   characterCanvas: {fileID: 1143591672}
 --- !u!1 &531192539
 GameObject:

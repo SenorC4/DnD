@@ -8,6 +8,7 @@ public class TurnSystem : MonoBehaviour
     [SerializeField] private List<GameObject> units;
     private List<GameObject> characters;
     private List<GameObject> enemies;
+    private List<Spell> spells;
     private CharacterScript tempCharacter;
     //private GameObject temp = null;
     public bool middleOfTurn = false;
@@ -15,6 +16,10 @@ public class TurnSystem : MonoBehaviour
     private int move;
     private int attack;
     private bool created;
+    public TMPro.TMP_Text stats;
+    public TMPro.TMP_Text availableAttacks;
+    private string attackString;
+    private string statString;
 
     public GameObject characterCanvas;
 
@@ -36,19 +41,30 @@ public class TurnSystem : MonoBehaviour
     void startPlaying()
     {
         middleOfTurn = true;
-                if (units[index].tag == "skeleton" || units[index].tag == "horse")
+            if (units[index].GetComponent<CharacterScript>().getType() == "Skeleton" || units[index].GetComponent<CharacterScript>().getType() == "Warhorse Skeleton")
+            {
+                Debug.Log("Enemy");
+                stats.text = "Unit: " + units[index].GetComponent<CharacterScript>().getType();
+                endTurn();         
+            }
+            else
+            {
+                makingMove();
+                Debug.Log(units[index].GetComponent<CharacterScript>().GetType());
+                stats.text = "Unit: " + units[index].GetComponent<CharacterScript>().getType() + ", HP: " + units[index].GetComponent<CharacterScript>().getHP() + ", AC: " + units[index].GetComponent<CharacterScript>().getAC();
+                spells = units[index].GetComponent<CharacterScript>().getSpells();
+                Debug.Log(spells.Count);
+                attackString = "Melee";
+                for (int i = 0; i < spells.Count; i++)
                 {
-                    Debug.Log("Enemy");
-                        endTurn();
-                    
-                }
-                else
-                {
-                    makingMove();
-                    Debug.Log(units[index].GetComponent<CharacterScript>().GetType());
-                }
-            
+                    attackString += ", ";
+                    attackString += spells[i].getName();
+                }   
+                availableAttacks.text = attackString;
+            }
         
+
+
 
     }
 
@@ -60,6 +76,7 @@ public class TurnSystem : MonoBehaviour
 
     public void endTurn()
     {
+        stats.text = "";
         move = 0;
         attack = 0;
         index++;

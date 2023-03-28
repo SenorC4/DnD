@@ -16,7 +16,7 @@ public class SkeletonScript : CharacterScript
         //meleeDamage[0] = 1;//using a shortsword
         //meleeDamage[1] = 6;
         setMovement(30);
-        setType("skeleton");
+        setType("Skeleton");
         setNum(1);
     }
 

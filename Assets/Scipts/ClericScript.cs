@@ -17,7 +17,7 @@ public class ClericScript : CharacterScript
         //meleeDamage[0] = 2;//using a maul
         //meleeDamage[1] = 6;
         setMovement(25);
-        setType("cleric");
+        setType("Cleric");
         spellList = new List<Spell>();
     }
 

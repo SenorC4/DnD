@@ -48,6 +48,11 @@ public abstract class CharacterScript: MonoBehaviour
         spells = spellsIn;
     }
 
+    public List<Spell> getSpells()
+    {
+        return spells;
+    }
+
     public int getArmorClass()
     {
         return AC;
@@ -56,6 +61,11 @@ public abstract class CharacterScript: MonoBehaviour
     public void setAC(int Armor)
     {
         AC = Armor;
+    }
+
+    public int getAC()
+    {
+        return AC;
     }
 
     public int getMovement()
