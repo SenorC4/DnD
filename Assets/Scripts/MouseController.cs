@@ -48,20 +48,23 @@ public class MouseController : MonoBehaviour
                     List<GameObject> list = cc.getEnemyList();
                     for (int i = 0; i < list.Count; i++)
                     {
-                        PlayerBehavior pb = list[i].GetComponent<PlayerBehavior>();
-                        if (pb.activeTile == overlayTile)
+                        if (ts.attack < 1 && ts.move <= 2)
                         {
-                            int dam = player.gameObject.GetComponent<CharacterScript>().rollForMeleeDamage();
-                            Debug.Log("HP: " + list[i].GetComponent<CharacterScript>().getHP());
-                            list[i].GetComponent<CharacterScript>().takeDamage(dam);
-                            Debug.Log(dam);
-                            Debug.Log("HP: " + list[i].GetComponent<CharacterScript>().getHP());
-                            isAttacking = true;
-                            justAttacked = true;
-                            ts.setDamageDone(dam);
+                            PlayerBehavior pb = list[i].GetComponent<PlayerBehavior>();
+                            if (pb.activeTile == overlayTile)
+                            {
+                                int dam = player.gameObject.GetComponent<CharacterScript>().rollForMeleeDamage();
+                                Debug.Log("HP: " + list[i].GetComponent<CharacterScript>().getHP());
+                                list[i].GetComponent<CharacterScript>().takeDamage(dam);
+                                Debug.Log(dam);
+                                Debug.Log("HP: " + list[i].GetComponent<CharacterScript>().getHP());
+                                isAttacking = true;
+                                justAttacked = true;
+                                ts.setDamageDone(dam);
+                            }
                         }
                     }
-                    ts.attack--;
+                    //ts.attack--;
                 }
                 else if (player == null)
                 {
@@ -72,7 +75,7 @@ public class MouseController : MonoBehaviour
                 {
                     Debug.Log("move: " + ts.move);
                     ts.move++;
-                    if (ts.move <= 2)
+                    if (ts.move <= 2 && ts.attack < 1)
                     {
                         path = pathfinder.findPath(player.activeTile, overlayTile);
                         Debug.Log(path.Count);
