@@ -90,6 +90,11 @@ public class MouseController : MonoBehaviour
         player = play;
     }
 
+    public PlayerBehavior getPlayer()
+    {
+        return player;
+    }
+
     private void MoveAlongPath()
     {
         var step = speed * Time.deltaTime;
