@@ -6,41 +6,27 @@ public class TurnSystem : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> units;
-    private List<CharacterScript> characters;
+    private List<GameObject> characters;
+    private List<GameObject> enemies;
     private CharacterScript tempCharacter;
     //private GameObject temp = null;
     public bool middleOfTurn = false;
     private int index;
     private int move;
     private int attack;
-    
+    private bool created;
+
+    public GameObject characterCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Turn Started");
-        GameObject[] tempUnits = GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < tempUnits.Length; i++)
-        {
-            units.Add(tempUnits[i]);
-            Debug.Log("added");
-        }
-
-
-
-        /*for (int i = 0; i < units.Count; i++)
-        {
-            
-            //temp = Instantiate(units[i]);
-            characters.Add(units[i].GetComponent<ClericScript>());
-            Debug.Log(characters.Count);
-        }*/
-        startPlaying();
-        Debug.Log("Turn Started");
+        
     }
 
     private void Update()
     {
+       
         if (middleOfTurn)
         {
 
@@ -104,6 +90,41 @@ public class TurnSystem : MonoBehaviour
         {
             attack++;
         }
+    }
+
+    public void Played()
+    {
+
+        characters = characterCanvas.GetComponent<CharacterCreate>().getPlayerList();
+        enemies = characterCanvas.GetComponent<CharacterCreate>().getEnemyList();
+        Debug.Log("Turn Started");
+        //.GameObject[] tempUnits = GameObject.FindGameObjectsWithTag("Player");
+        /*for (int i = 0; i < tempUnits.Length; i++)
+        {
+            units.Add(tempUnits[i]);
+            Debug.Log("added");
+        }*/
+        for (int i = 0; i < characters.Count; i++)
+        {
+            units.Add(characters[i]);
+            Debug.Log("added");
+        }
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            units.Add(enemies[i]);
+            Debug.Log("added");
+        }
+
+
+
+        /*for (int i = 0; i < units.Count; i++)
+        {
+
+            //temp = Instantiate(units[i]);
+            characters.Add(units[i].GetComponent<ClericScript>());
+            Debug.Log(characters.Count);
+        }*/
+        startPlaying();
     }
 
 }
