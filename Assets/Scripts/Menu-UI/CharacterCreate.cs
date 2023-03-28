@@ -17,6 +17,7 @@ public class CharacterCreate : MonoBehaviour
     public TMPro.TMP_Dropdown SkeletonHorseDrop;
 
     public TMPro.TMP_Text textOut;
+    public TMPro.TMP_Text initiativeText;
 
     public GameObject wizardPre;
     public GameObject clericPre;
@@ -36,6 +37,7 @@ public class CharacterCreate : MonoBehaviour
     }
 
     public void addWizard(){
+        initiativeText.text = "";
         string wizardText = "Wizard " + wSS1.options[wSS1.value].text + " " + wSS2.options[wSS2.value].text + " " + wSS3.options[wSS3.value].text;
         Debug.Log(wizardText);
 
@@ -78,6 +80,12 @@ public class CharacterCreate : MonoBehaviour
             wizard.GetComponent<WizardScript>().setSpells(wizardSpells);
 
             textOut.text = "Added: " + wizardText;
+
+            //initiaive 
+
+
+            initiativeText.text = "Initiative: " + Random.Range(0, 20);
+
             playerList.Add(wizard);
             units.Add(wizard);
             wizardSpells.Clear();
@@ -86,6 +94,7 @@ public class CharacterCreate : MonoBehaviour
     }
 
     public void addCleric(){
+        initiativeText.text = "";
         string clericText = "Cleric " + cSS1.options[cSS1.value].text + " " + cSS2.options[cSS2.value].text + " " + cSS3.options[cSS3.value].text;
         Debug.Log(clericText);
 
@@ -124,6 +133,10 @@ public class CharacterCreate : MonoBehaviour
 
             textOut.text = "Added: " + clericText;
 
+            //initiaive 
+
+            initiativeText.text = "Initiative: " + Random.Range(0, 20);
+
             playerList.Add(cleric);
             units.Add(cleric);
             clericSpells.Clear();
@@ -133,7 +146,8 @@ public class CharacterCreate : MonoBehaviour
     }
 
     public void addEnemies(){
-        if((SkeletonDrop.value + SkeletonHorseDrop.value + enemyList.Count) <= 5){
+        initiativeText.text = "";
+        if ((SkeletonDrop.value + SkeletonHorseDrop.value + enemyList.Count) <= 5 && (SkeletonDrop.value + SkeletonHorseDrop.value) > 0){
             Debug.Log(SkeletonDrop.value + " " + SkeletonHorseDrop.value);
             for(int i = 0; i < SkeletonDrop.value; i++){
                 
@@ -168,7 +182,15 @@ public class CharacterCreate : MonoBehaviour
                 units.Add(skeletonHorse);
             }
 
+            //initiaive 
 
+            initiativeText.text = "Initiatives: " + Random.Range(0, 20);
+            
+            for(int i = 0; i < (SkeletonDrop.value + SkeletonHorseDrop.value); i++)
+            {
+                initiativeText.text += ", " + Random.Range(0, 20);
+            }
+                
 
             textOut.text = "Added: " + SkeletonDrop.value + " Skeletons and " + SkeletonHorseDrop.value + " Warhorse Skeletons.";
         

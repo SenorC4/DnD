@@ -15,6 +15,7 @@ public abstract class CharacterScript: MonoBehaviour
     private int num;
     public Pathfinder p;
     public List<Spell> spellList = new List<Spell>();
+    public int initiative;
 
     public int getNum()
     {
@@ -25,6 +26,17 @@ public abstract class CharacterScript: MonoBehaviour
     {
         this.num = num;    
     }
+
+    public void setInitiative(int input)
+    {
+        initiative = input;
+    }
+    
+    public int getInitiative()
+    {
+        return initiative;
+    }
+
     public int getHP()
     {
         return HP;
