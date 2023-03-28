@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
-public class Spell
+public abstract class Spell
 {
     DiceRoller d = new DiceRoller();
     public string name;
@@ -17,10 +17,6 @@ public class Spell
     public int cost;
     public bool cantrip = false;
 
-    public Spell()
-    {
-
-    }
 
     public int getRange()
     {

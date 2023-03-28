@@ -5,22 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    class RayOfFrost : Spell
+public class RayOfFrost : Spell
+{
+
+    public RayOfFrost()
     {
-
-        public RayOfFrost()
-        {
-            cantrip = true;
-            cost = 0;
-            range = 60;
-            sides = new int[] { 10 };
-            modifier = 0;
-            damage = 1;
-            name = "Ray of Frost";
-
-        }
-
+        cantrip = true;
+        cost = 0;
+        range = 60;
+        sides = new int[] { 10 };
+        modifier = 0;
+        damage = 1;
+        name = "Ray of Frost";
 
     }
+
+
+}
 
 

@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    class Aid : Spell
+public class Aid : Spell
+{
+    public Aid()
     {
-        public Aid()
-        {
-            cost = 2;
-            range = 30;
-            sides = new int[] { };
-            modifier = 5;
-            damage = -1;
-            name = "Aid";
-
-        }
-
+        cost = 2;
+        range = 30;
+        sides = new int[] { };
+        modifier = 5;
+        damage = -1;
+        name = "Aid";
 
     }
+
+
+}
 
 

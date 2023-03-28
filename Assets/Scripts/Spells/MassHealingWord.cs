@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    class MassHealingWord : Spell
+public class MassHealingWord : Spell
+{
+    public MassHealingWord()
     {
-        public MassHealingWord()
-        {
-            cost = 3;
-            range = 60;
-            sides = new int[] { 4 };
-            modifier = 0;
-            damage = -1;
-            name = "Mass Healing Word";
-
-        }
-
+        cost = 3;
+        range = 60;
+        sides = new int[] { 4 };
+        modifier = 0;
+        damage = -1;
+        name = "Mass Healing Word";
 
     }
+
+
+}
 
 

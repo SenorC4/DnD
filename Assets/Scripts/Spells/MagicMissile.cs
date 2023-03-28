@@ -5,21 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    class MagicMissile : Spell
+public class MagicMissile : Spell
+{
+
+    public MagicMissile()
     {
-
-        public MagicMissile()
-        {
-            cost = 1;
-            range = 120;
-            sides = new int[] { 4, 4, 4 };
-            modifier = 3;
-            damage = 1;
-            name = "Magic Missile";
-
-        }
-
+        cost = 1;
+        range = 120;
+        sides = new int[] { 4, 4, 4 };
+        modifier = 3;
+        damage = 1;
+        name = "Magic Missile";
 
     }
+
+
+}
 
 

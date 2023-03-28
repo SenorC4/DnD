@@ -41,13 +41,14 @@ public class CharacterCreate : MonoBehaviour
 
         List<Spell> wizardSpells = new List<Spell>();
 
-        if(wizardText.Contains("Slot")){
+        if (wizardText.Contains("Slot")){
             textOut.text = "Please choose your spells";
         }else if(playerList.Count > 4){
             textOut.text = "Max number of players reached";
         }else{
             //parse spells from text and add them to the list
             if(wizardText.Contains("fire")){
+                //Spell fire = new Firebolt();
                 wizardSpells.Add(new Firebolt());
             }
             if(wizardText.Contains("Frost")){
@@ -65,7 +66,7 @@ public class CharacterCreate : MonoBehaviour
             ///
             GameObject wizard = Instantiate(wizardPre);
             //wizard.AddComponent<WizardScript>();
-            wizard.GetComponent<WizardScript>().setSpells(wizardSpells);
+            
 
             PlayerBehavior player = wizard.GetComponent<PlayerBehavior>();
             player.transform.position = new Vector3(MapManager.instance.current.transform.position.x, MapManager.instance.current.transform.position.y, MapManager.instance.current.transform.position.z);
@@ -73,6 +74,8 @@ public class CharacterCreate : MonoBehaviour
             player.activeTile = MapManager.instance.current;
             MapManager.instance.setCurrentNewRand();
             mc.setPlayer(player);
+
+            wizard.GetComponent<WizardScript>().setSpells(wizardSpells);
 
             textOut.text = "Added: " + wizardText;
             playerList.Add(wizard);
@@ -109,7 +112,7 @@ public class CharacterCreate : MonoBehaviour
             ///
             ///
             GameObject cleric = Instantiate(clericPre);
-            cleric.AddComponent<ClericScript>();
+            //cleric.AddComponent<ClericScript>();
             cleric.GetComponent<ClericScript>().setSpells(clericSpells);
 
             PlayerBehavior player = cleric.GetComponent<PlayerBehavior>();
@@ -136,7 +139,7 @@ public class CharacterCreate : MonoBehaviour
                 
 
                 GameObject skeleton = Instantiate(skelePre);
-                skeleton.AddComponent<SkeletonScript>();
+                //skeleton.AddComponent<SkeletonScript>();
 
                 PlayerBehavior player = skeleton.GetComponent<PlayerBehavior>();
                 player.transform.position = new Vector3(MapManager.instance.current.transform.position.x, MapManager.instance.current.transform.position.y, MapManager.instance.current.transform.position.z);
@@ -152,7 +155,7 @@ public class CharacterCreate : MonoBehaviour
             for(int i = 0; i < SkeletonHorseDrop.value; i++){
                 
                 GameObject skeletonHorse = Instantiate(horseSkelePre);
-                skeletonHorse.AddComponent<WarHorseSkeletonScript>();
+               // skeletonHorse.AddComponent<WarHorseSkeletonScript>();
 
                 PlayerBehavior player = skeletonHorse.GetComponent<PlayerBehavior>();
                 player.transform.position = new Vector3(MapManager.instance.current.transform.position.x, MapManager.instance.current.transform.position.y, MapManager.instance.current.transform.position.z);
