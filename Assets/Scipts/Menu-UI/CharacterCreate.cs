@@ -37,7 +37,7 @@ public class CharacterCreate : MonoBehaviour
 
         if(wizardText.Contains("Slot")){
             textOut.text = "Please choose your spells";
-        }else if(playerList.Count > 9){
+        }else if(playerList.Count > 4){
             textOut.text = "Max number of players reached";
         }else{
             //parse spells from text and add them to the list
@@ -76,7 +76,7 @@ public class CharacterCreate : MonoBehaviour
 
         if(clericText.Contains("Slot")){
             textOut.text = "Please choose your spells";
-        }else if(playerList.Count > 9){
+        }else if(playerList.Count > 4){
             textOut.text = "Max number of players reached";
         }else{
             if(clericText.Contains("1-Healing")){
@@ -106,7 +106,7 @@ public class CharacterCreate : MonoBehaviour
     }
 
     public void addEnemies(){
-        if((SkeletonDrop.value + SkeletonHorseDrop.value) <= 10){
+        if((SkeletonDrop.value + SkeletonHorseDrop.value) <= 5){
 
             for(int i = 0; i < SkeletonDrop.value; i++){
                 //enemyList.Add(new SkeletonScript());
