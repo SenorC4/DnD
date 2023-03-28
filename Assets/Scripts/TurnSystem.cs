@@ -9,15 +9,18 @@ public class TurnSystem : MonoBehaviour
     private List<GameObject> characters;
     private List<GameObject> enemies;
     private List<Spell> spells;
-    private CharacterScript tempCharacter;
+    private GameObject tempCharacter;
     //private GameObject temp = null;
     public bool middleOfTurn = false;
     private int index;
     public int move;
     public int attack;
     private bool created;
+    private int damageDone = 0;
     public TMPro.TMP_Text stats;
     public TMPro.TMP_Text availableAttacks;
+    public TMPro.TMP_Text damageRoll;
+
     private string attackString;
     private string statString;
     [SerializeField] public Pathfinder path = new Pathfinder();
@@ -35,7 +38,17 @@ public class TurnSystem : MonoBehaviour
        
         if (middleOfTurn)
         {
-
+            damageRoll.text = "Damage Done: " + damageDone;
+            for (int i = 0; i < units.Count; i++)
+            {
+                if (units[i].GetComponent<CharacterScript>().getHP() <= 0)
+                {
+                    GameObject tempCharacter = units[i];
+                    //units.RemoveAt(i);
+                    //Destroy(tempCharacter);
+                }
+                //Debug.Log("Size: " + units.Count);
+            }
         }
     }
 
@@ -78,6 +91,7 @@ public class TurnSystem : MonoBehaviour
 
     public void endTurn()
     {
+        
         stats.text = "";
         move = 0;
         attack = 0;
@@ -107,19 +121,21 @@ public class TurnSystem : MonoBehaviour
     public void makeAttack()
     {
         Debug.Log(attack);
+        
         if (attack == 0 && move < 2)
         {
             attack++;
             units[index].GetComponent<CharacterScript>().meleeAttack(path);
             
         }
+        
     }
 
     public void Played()
     {
         
-        characters = characterCanvas.GetComponent<CharacterCreate>().getPlayerList();
-        enemies = characterCanvas.GetComponent<CharacterCreate>().getEnemyList();
+        characters = characterCanvas.GetComponent<CharacterCreate>().getUnitList();
+        //enemies = characterCanvas.GetComponent<CharacterCreate>().getEnemyList();
         Debug.Log("Turn Started");
         //.GameObject[] tempUnits = GameObject.FindGameObjectsWithTag("Player");
         /*for (int i = 0; i < tempUnits.Length; i++)
@@ -132,14 +148,14 @@ public class TurnSystem : MonoBehaviour
             units.Add(characters[i]);
             Debug.Log("added");
         }
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            units.Add(enemies[i]);
-            Debug.Log("added");
-        }
+        //for (int i = 0; i < enemies.Count; i++)
+        //{
+        //    units.Add(enemies[i]);
+        //    Debug.Log("added");
+        //}
 
 
-
+        //damageRoll.text = "Damage Done: " + damageDone;
         /*for (int i = 0; i < units.Count; i++)
         {
 
@@ -149,6 +165,11 @@ public class TurnSystem : MonoBehaviour
         }*/
         endTurn();
         startPlaying();
+    }
+
+    public void setDamageDone(int damage)
+    {
+        damageDone = damage;
     }
 
 }
