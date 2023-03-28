@@ -13,6 +13,10 @@ public class MapManager : MonoBehaviour
 
     public Dictionary<Vector2Int, OverlayTile> map;
 
+    public OverlayTile current;
+    private Vector2Int numsX;
+    private Vector2Int numsY;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -44,17 +48,27 @@ public class MapManager : MonoBehaviour
                     //Debug.Log("created");
                     //if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
                     //{
-                        //Debug.Log("created");
-                        var overlayTile = Instantiate(overlayTilePrefab, overlayContainer.transform);
-                        var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
+                    //Debug.Log("created");
+                    var overlayTile = Instantiate(overlayTilePrefab, overlayContainer.transform);
+                    var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
 
-                        overlayTile.transform.position = new Vector3(cellWorldPosition.x-1, cellWorldPosition.y-1, cellWorldPosition.z);
-                        overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder + 1;
-                        overlayTile.gridLocation = tileLocation;
-                        map.Add(tileKey, overlayTile);
+                    overlayTile.transform.position = new Vector3(cellWorldPosition.x - 1, cellWorldPosition.y - 1, cellWorldPosition.z);
+                    overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder + 1;
+                    overlayTile.gridLocation = tileLocation;
+                    map.Add(tileKey, overlayTile);
                     //}
                 }
             }
         }
+        numsX = new Vector2Int(bounds.min.x + 1, bounds.max.x);
+        numsY = new Vector2Int(bounds.min.y + 1, bounds.max.y);
+        current = map[new Vector2Int(Random.Range(numsX.x, numsX.y), Random.Range(numsY.x, numsY.y))];
+        
+    }
+
+    public void setCurrentNewRand()
+    {
+        current = map[new Vector2Int(Random.Range(numsX.x, numsX.y), Random.Range(numsY.x, numsY.y))];
     }
 }
+

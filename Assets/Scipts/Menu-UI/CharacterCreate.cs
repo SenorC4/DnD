@@ -25,9 +25,15 @@ public class CharacterCreate : MonoBehaviour
 
     [SerializeField] public List<GameObject> playerList = new List<GameObject>();
     [SerializeField] public List<GameObject> enemyList = new List<GameObject>();
-    
-    
+    [SerializeField] public List<GameObject> units = new List<GameObject>();
 
+    private OverlayTile tile;
+    private MouseController mc;
+
+    void Start()
+    {
+        mc = GameObject.FindGameObjectWithTag("Cursor").GetComponent<MouseController>();
+    }
 
     public void addWizard(){
         string wizardText = "Wizard " + wSS1.options[wSS1.value].text + " " + wSS2.options[wSS2.value].text + " " + wSS3.options[wSS3.value].text;
@@ -58,11 +64,19 @@ public class CharacterCreate : MonoBehaviour
             ///
             ///
             GameObject wizard = Instantiate(wizardPre);
-            wizard.AddComponent<WizardScript>();
+            //wizard.AddComponent<WizardScript>();
             wizard.GetComponent<WizardScript>().setSpells(wizardSpells);
+
+            PlayerBehavior player = wizard.GetComponent<PlayerBehavior>();
+            player.transform.position = new Vector3(MapManager.instance.current.transform.position.x, MapManager.instance.current.transform.position.y, MapManager.instance.current.transform.position.z);
+            player.GetComponent<SpriteRenderer>().sortingOrder = MapManager.instance.current.GetComponent<SpriteRenderer>().sortingOrder;
+            player.activeTile = MapManager.instance.current;
+            MapManager.instance.setCurrentNewRand();
+            mc.setPlayer(player);
 
             textOut.text = "Added: " + wizardText;
             playerList.Add(wizard);
+            units.Add(wizard);
             wizardSpells.Clear();
         }
         Debug.Log(playerList.Count);
@@ -87,18 +101,28 @@ public class CharacterCreate : MonoBehaviour
             }
             if(clericText.Contains("2-Mass")){
                 clericSpells.Add(new MassHealingWord());
+                Debug.Log("Made it Here -----------------------------------------------------------------");
+                Debug.Log(clericSpells[0]);
             }
 
             //Need random tile here
             ///
             ///
             GameObject cleric = Instantiate(clericPre);
-            cleric.AddComponent<ClericScript>();
+            //cleric.AddComponent<ClericScript>();
             cleric.GetComponent<ClericScript>().setSpells(clericSpells);
+
+            PlayerBehavior player = cleric.GetComponent<PlayerBehavior>();
+            player.transform.position = new Vector3(MapManager.instance.current.transform.position.x, MapManager.instance.current.transform.position.y, MapManager.instance.current.transform.position.z);
+            player.GetComponent<SpriteRenderer>().sortingOrder = MapManager.instance.current.GetComponent<SpriteRenderer>().sortingOrder;
+            player.activeTile = MapManager.instance.current;
+            MapManager.instance.setCurrentNewRand();
+            mc.setPlayer(player);
 
             textOut.text = "Added: " + clericText;
 
             playerList.Add(cleric);
+            units.Add(cleric);
             clericSpells.Clear();
             
         }
@@ -114,7 +138,15 @@ public class CharacterCreate : MonoBehaviour
                 GameObject skeleton = Instantiate(skelePre);
                 skeleton.AddComponent<SkeletonScript>();
 
-                playerList.Add(skeleton);
+                PlayerBehavior player = skeleton.GetComponent<PlayerBehavior>();
+                player.transform.position = new Vector3(MapManager.instance.current.transform.position.x, MapManager.instance.current.transform.position.y, MapManager.instance.current.transform.position.z);
+                player.GetComponent<SpriteRenderer>().sortingOrder = MapManager.instance.current.GetComponent<SpriteRenderer>().sortingOrder;
+                player.activeTile = MapManager.instance.current;
+                MapManager.instance.setCurrentNewRand();
+                mc.setPlayer(player);
+
+                enemyList.Add(skeleton);
+                units.Add(skeleton);
             }
             
             for(int i = 0; i < SkeletonHorseDrop.value; i++){
@@ -122,7 +154,15 @@ public class CharacterCreate : MonoBehaviour
                 GameObject skeletonHorse = Instantiate(horseSkelePre);
                 skeletonHorse.AddComponent<WarHorseSkeletonScript>();
 
-                playerList.Add(skeletonHorse);
+                PlayerBehavior player = skeletonHorse.GetComponent<PlayerBehavior>();
+                player.transform.position = new Vector3(MapManager.instance.current.transform.position.x, MapManager.instance.current.transform.position.y, MapManager.instance.current.transform.position.z);
+                player.GetComponent<SpriteRenderer>().sortingOrder = MapManager.instance.current.GetComponent<SpriteRenderer>().sortingOrder;
+                player.activeTile = MapManager.instance.current;
+                MapManager.instance.setCurrentNewRand();
+                mc.setPlayer(player);
+
+                enemyList.Add(skeletonHorse);
+                units.Add(skeletonHorse);
             }
 
 

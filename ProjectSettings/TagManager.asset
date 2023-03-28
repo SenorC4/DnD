@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CharacterCanvas
+  - Map
+  - Cursor
   layers:
   - Default
   - TransparentFX
