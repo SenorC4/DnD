@@ -4331,6 +4331,7 @@ MonoBehaviour:
   units: []
   middleOfTurn: 0
   stats: {fileID: 889095366}
+  availableAttacks: {fileID: 0}
   characterCanvas: {fileID: 1143591672}
 --- !u!1 &531192539
 GameObject:
@@ -6739,7 +6740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &1050479072
 Grid:
   m_ObjectHideFlags: 0
@@ -6783,6 +6784,7 @@ MonoBehaviour:
   overlayTilePrefab: {fileID: 1682407924789429510, guid: 8246e53f860beb248912f5225b38d7eb,
     type: 3}
   overlayContainer: {fileID: 2120763529}
+  current: {fileID: 0}
 --- !u!1 &1072372359
 GameObject:
   m_ObjectHideFlags: 0
@@ -7105,7 +7107,7 @@ GameObject:
   - component: {fileID: 1079944274}
   m_Layer: 0
   m_Name: Cursor
-  m_TagString: Untagged
+  m_TagString: Cursor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7534,6 +7536,7 @@ MonoBehaviour:
     type: 3}
   playerList: []
   enemyList: []
+  units: []
 --- !u!114 &1143591676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8437,7 +8440,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290946997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 
@@ -11768,7 +11771,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754093781}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 

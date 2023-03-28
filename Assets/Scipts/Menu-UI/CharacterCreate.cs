@@ -109,7 +109,7 @@ public class CharacterCreate : MonoBehaviour
             ///
             ///
             GameObject cleric = Instantiate(clericPre);
-            //cleric.AddComponent<ClericScript>();
+            cleric.AddComponent<ClericScript>();
             cleric.GetComponent<ClericScript>().setSpells(clericSpells);
 
             PlayerBehavior player = cleric.GetComponent<PlayerBehavior>();
@@ -131,9 +131,9 @@ public class CharacterCreate : MonoBehaviour
 
     public void addEnemies(){
         if((SkeletonDrop.value + SkeletonHorseDrop.value + enemyList.Count) <= 5){
-
+            Debug.Log(SkeletonDrop.value + " " + SkeletonHorseDrop.value);
             for(int i = 0; i < SkeletonDrop.value; i++){
-                //enemyList.Add(new SkeletonScript());
+                
 
                 GameObject skeleton = Instantiate(skelePre);
                 skeleton.AddComponent<SkeletonScript>();
@@ -150,7 +150,7 @@ public class CharacterCreate : MonoBehaviour
             }
             
             for(int i = 0; i < SkeletonHorseDrop.value; i++){
-                //enemyList.Add(new WarHorseSkeletonScript());
+                
                 GameObject skeletonHorse = Instantiate(horseSkelePre);
                 skeletonHorse.AddComponent<WarHorseSkeletonScript>();
 
