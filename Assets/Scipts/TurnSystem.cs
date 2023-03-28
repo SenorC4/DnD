@@ -10,8 +10,10 @@ public class TurnSystem : MonoBehaviour
     private CharacterScript tempCharacter;
     //private GameObject temp = null;
     public bool middleOfTurn = false;
-    public int index;
-
+    private int index;
+    private int move;
+    private int attack;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +74,8 @@ public class TurnSystem : MonoBehaviour
 
     public void endTurn()
     {
+        move = 0;
+        attack = 0;
         index++;
         if (index == units.Count)
         {
@@ -83,5 +87,23 @@ public class TurnSystem : MonoBehaviour
     }
 
 
+    public void moveSpace()
+    {
+        Debug.Log(move);
+        if (!(move == 2 || attack == 1))
+        {
+            move++;
+        }
+
+    }
+
+    public void makeAttack()
+    {
+        Debug.Log(attack);
+        if (attack == 0 && move < 2)
+        {
+            attack++;
+        }
+    }
 
 }
