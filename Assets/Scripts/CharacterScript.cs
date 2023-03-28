@@ -14,6 +14,7 @@ public abstract class CharacterScript: MonoBehaviour
     private string type;
     private int num;
     private List<Spell> spells;
+    public Pathfinder p;
 
     public int getNum()
     {
@@ -83,9 +84,14 @@ public abstract class CharacterScript: MonoBehaviour
         HP -= damage;
     }
 
-    public void meleeAttack(Collider other)
+    public void meleeAttack(Pathfinder p)
     {
-        other.gameObject.GetComponent<CharacterScript>().takeDamage(rollForMeleeDamage());
+        //other.gameObject.GetComponent<CharacterScript>().takeDamage(rollForMeleeDamage());
+        List<OverlayTile> tiles = p.getNeighborMouse(gameObject.GetComponent<PlayerBehavior>().activeTile);
+        for (int i = 0;  i < tiles.Count; i++)
+        {
+            tiles[i].ShowTile();
+        }
     }
 
 

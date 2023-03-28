@@ -20,6 +20,7 @@ public class TurnSystem : MonoBehaviour
     public TMPro.TMP_Text availableAttacks;
     private string attackString;
     private string statString;
+    [SerializeField] public Pathfinder path = new Pathfinder();
 
     public GameObject characterCanvas;
 
@@ -45,6 +46,7 @@ public class TurnSystem : MonoBehaviour
             {
                 Debug.Log("Enemy");
                 stats.text = "Unit: " + units[index].GetComponent<CharacterScript>().getType();
+                makingMove();
                 endTurn();         
             }
             else
@@ -60,7 +62,7 @@ public class TurnSystem : MonoBehaviour
                     attackString += ", ";
                     attackString += spells[i].getName();
                 }   
-                availableAttacks.text = attackString;
+                //availableAttacks.text = attackString;
             }
         
 
@@ -106,6 +108,7 @@ public class TurnSystem : MonoBehaviour
         if (attack == 0 && move < 2)
         {
             attack++;
+            units[index].GetComponent<CharacterScript>().meleeAttack(path);
         }
     }
 

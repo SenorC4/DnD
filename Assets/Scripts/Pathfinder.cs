@@ -125,4 +125,11 @@ public class Pathfinder
 
         return neighbors;
     }
+
+    public List<OverlayTile> getNeighborMouse(OverlayTile tile)
+    {
+        return GetNeighborTiles(tile);
+    }
+
+
 }
