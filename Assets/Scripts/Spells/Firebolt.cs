@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class Firebolt : Spell
+public class Firebolt : Spell
 {
 
     public Firebolt()

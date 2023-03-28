@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    class HealingWord : Spell
+public class HealingWord : Spell
+{
+    public HealingWord()
     {
-        public HealingWord()
-        {
-            cost = 1;
-            range = 60;
-            sides = new int[] { 4 };
-            modifier = 0;
-            damage = -1;
-            name = "Healing Word";
-
-        }
-
+        cost = 1;
+        range = 60;
+        sides = new int[] { 4 };
+        modifier = 0;
+        damage = -1;
+        name = "Healing Word";
 
     }
+
+
+}
 

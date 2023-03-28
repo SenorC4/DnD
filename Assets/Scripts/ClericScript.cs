@@ -5,8 +5,6 @@ using UnityEngine;
 public class ClericScript : CharacterScript
 {
 
-    List<Spell> spellList;
-
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +19,6 @@ public class ClericScript : CharacterScript
         spellList = new List<Spell>();
     }
 
-    public ClericScript(List<Spell> ingestSpells){
-        spellList = ingestSpells;
-    }
 
     public override int rollForMeleeDamage()
     {
@@ -38,9 +33,13 @@ public class ClericScript : CharacterScript
     }
 
 
+
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < spellList.Count; i++)
+        {
+            Debug.Log(spellList[i]);
+        }
     }
 }
