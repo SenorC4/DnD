@@ -14,6 +14,7 @@ public class OverlayTile : MonoBehaviour
     public OverlayTile previous;
 
     public Vector3Int gridLocation;
+    public bool isAttackable;
 
     // Update is called once per frame
     void Update()

@@ -101,6 +101,7 @@ public abstract class CharacterScript: MonoBehaviour
         for (int i = 0;  i < tiles.Count; i++)
         {
             tiles[i].ShowTile();
+            tiles[i].isAttackable = true;
         }
     }
 

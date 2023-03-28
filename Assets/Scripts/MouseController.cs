@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class MouseController : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class MouseController : MonoBehaviour
     private PlayerBehavior player;
 
     private Pathfinder pathfinder;
+    public bool isAttacking = false;
     [SerializeField] private List<OverlayTile> path = new List<OverlayTile>();
+    [SerializeField] private CharacterCreate cc;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,7 @@ public class MouseController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        bool justAttacked = false;
         var focusedTileHit = GetFocusedOnTile();
 
         if (focusedTileHit.HasValue)
@@ -37,8 +41,24 @@ public class MouseController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 overlayTile.GetComponent<OverlayTile>().ShowTile();
-
-                if (player == null)
+                if (overlayTile.GetComponent<OverlayTile>().isAttackable)
+                {
+                    List<GameObject> list = cc.getEnemyList();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        PlayerBehavior pb = list[i].GetComponent<PlayerBehavior>();
+                        if (pb.activeTile == overlayTile)
+                        {
+                            Debug.Log(list[i].GetComponent<CharacterScript>().getHP());
+                            list[i].GetComponent<CharacterScript>().takeDamage(player.gameObject.GetComponent<CharacterScript>().rollForMeleeDamage());
+                            Debug.Log(player.gameObject.GetComponent<CharacterScript>().rollForMeleeDamage());
+                            Debug.Log(list[i].GetComponent<CharacterScript>().getHP());
+                            isAttacking = true;
+                            justAttacked = true;
+                        }
+                    }
+                }
+                else if (player == null)
                 {
                     //player = Instantiate(playerPrefab).GetComponent<PlayerBehavior>();
                     //PositionPlayerOnLine(overlayTile);
@@ -53,7 +73,15 @@ public class MouseController : MonoBehaviour
 
         if (path.Count > 0)
         {
-            MoveAlongPath();
+            //isAttacking = true;
+            if (!isAttacking)
+                MoveAlongPath();
+        }
+
+        if (justAttacked)
+        {
+            isAttacking = false;
+            justAttacked = false;
         }
     }
 

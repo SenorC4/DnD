@@ -27,7 +27,7 @@ public class TurnSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+ 
     }
 
     private void Update()
@@ -47,7 +47,7 @@ public class TurnSystem : MonoBehaviour
                 Debug.Log("Enemy");
                 stats.text = "Unit: " + units[index].GetComponent<CharacterScript>().getType();
                 makingMove();
-                endTurn();         
+                //endTurn();         
             }
             else
             {
@@ -87,6 +87,8 @@ public class TurnSystem : MonoBehaviour
             index = 0;
         }
         middleOfTurn = false;
+        MouseController mc = GameObject.FindGameObjectWithTag("Cursor").GetComponent<MouseController>();
+        mc.setPlayer(units[index].GetComponent<PlayerBehavior>());
         Debug.Log("Turn Ended");
         startPlaying();
     }
@@ -109,12 +111,13 @@ public class TurnSystem : MonoBehaviour
         {
             attack++;
             units[index].GetComponent<CharacterScript>().meleeAttack(path);
+            
         }
     }
 
     public void Played()
     {
-
+        
         characters = characterCanvas.GetComponent<CharacterCreate>().getPlayerList();
         enemies = characterCanvas.GetComponent<CharacterCreate>().getEnemyList();
         Debug.Log("Turn Started");
@@ -144,6 +147,7 @@ public class TurnSystem : MonoBehaviour
             characters.Add(units[i].GetComponent<ClericScript>());
             Debug.Log(characters.Count);
         }*/
+        endTurn();
         startPlaying();
     }
 

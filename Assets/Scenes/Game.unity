@@ -7207,6 +7207,7 @@ MonoBehaviour:
     type: 3}
   speed: 3
   path: []
+  cc: {fileID: 1143591675}
 --- !u!1 &1106484401
 GameObject:
   m_ObjectHideFlags: 0
