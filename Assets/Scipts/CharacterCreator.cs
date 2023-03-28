@@ -14,9 +14,14 @@ public class CharacterCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Random rand = new Random();
         for(int i = 0; i < playerList.Count; i++){
-            //playerPrefabList.Add(Instantiate(playerPrefab));
-
+            
+            int x = Random.Range(0,5);
+            int y = Random.Range(0,5);
+            
+            Instantiate(playerPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            Debug.Log("Here");
         }
     }
 
