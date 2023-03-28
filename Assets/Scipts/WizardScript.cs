@@ -14,13 +14,8 @@ public class WizardScript : CharacterScript
         //meleeDamage[0] = 1;//using a handaxe
         //meleeDamage[1] = 6;
         setMovement(30);
-        setType("wizard");
-        spellList = new List<Spell>();    
+        setType("wizard");  
 
-    }
-
-    public WizardScript(List<Spell> ingestSpells){
-        spellList = ingestSpells;
     }
 
     public override int rollForMeleeDamage()

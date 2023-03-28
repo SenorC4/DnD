@@ -20,6 +20,7 @@ public class MouseController : MonoBehaviour
     void Start()
     {
         pathfinder = new Pathfinder();
+        
     }
 
     // Update is called once per frame
@@ -32,15 +33,15 @@ public class MouseController : MonoBehaviour
             OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
             transform.position = overlayTile.transform.position;
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder + 2;
-
+            
             if (Input.GetMouseButtonDown(0))
             {
                 overlayTile.GetComponent<OverlayTile>().ShowTile();
 
                 if (player == null)
                 {
-                    player = Instantiate(playerPrefab).GetComponent<PlayerBehavior>();
-                    PositionPlayerOnLine(overlayTile);
+                    //player = Instantiate(playerPrefab).GetComponent<PlayerBehavior>();
+                    //PositionPlayerOnLine(overlayTile);
                 }
                 else
                 {
@@ -54,6 +55,11 @@ public class MouseController : MonoBehaviour
         {
             MoveAlongPath();
         }
+    }
+
+    public void setPlayer(PlayerBehavior play)
+    {
+        player = play;
     }
 
     private void MoveAlongPath()
