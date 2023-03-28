@@ -9,6 +9,7 @@ public class TurnSystem : MonoBehaviour
     private List<GameObject> characters;
     private List<GameObject> enemies;
     private List<Spell> spells;
+    List<GameObject> tempList;
     private GameObject tempCharacter;
     //private GameObject temp = null;
     public bool middleOfTurn = false;
@@ -44,8 +45,30 @@ public class TurnSystem : MonoBehaviour
                 if (units[i].GetComponent<CharacterScript>().getHP() <= 0)
                 {
                     GameObject tempCharacter = units[i];
-                    //units.RemoveAt(i);
-                    //Destroy(tempCharacter);
+                    units.RemoveAt(i);
+                    Destroy(tempCharacter);
+                    
+                    for (int j = 0; j < units.Count; j++)
+                    {
+                        if (units[j] != null)
+                        {
+                            tempList.Add(units[j]);
+                        }
+                    }
+                    units.Clear();
+                    units = tempList;
+                    tempList.Clear();
+                    //enemies.Clear();
+                    //for (int j = 0; j < units.Count; j++)
+                    //{
+                    //    if (units[j].GetComponent<CharacterScript>().getType() == "Skeleton" || GetComponent<CharacterScript>().getType() == "Warhorse Skeleton")
+                    //    {
+                    //        enemies.Add(units[j]);
+                    //    }
+                    //}
+
+                    //characterCanvas.GetComponent<CharacterCreate>().setEnemies(enemies);
+
                 }
                 //Debug.Log("Size: " + units.Count);
             }
@@ -126,16 +149,19 @@ public class TurnSystem : MonoBehaviour
         {
             attack++;
             units[index].GetComponent<CharacterScript>().meleeAttack(path);
+
             
         }
         
+  
+
     }
 
     public void Played()
     {
         
         characters = characterCanvas.GetComponent<CharacterCreate>().getUnitList();
-        //enemies = characterCanvas.GetComponent<CharacterCreate>().getEnemyList();
+        enemies = characterCanvas.GetComponent<CharacterCreate>().getEnemyList();
         Debug.Log("Turn Started");
         //.GameObject[] tempUnits = GameObject.FindGameObjectsWithTag("Player");
         /*for (int i = 0; i < tempUnits.Length; i++)
